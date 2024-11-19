@@ -18,4 +18,7 @@ print(lista)
 lista.remove(lista[0])
 print(lista)
 
-del lista
+lista.remove(lista[2])
+lista.remove(lista[3])
+lista.remove(lista[3])
+print(lista)
