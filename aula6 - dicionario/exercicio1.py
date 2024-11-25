@@ -1,12 +1,18 @@
-produto = {
-    "nome": "nenhum",
-    'preço': "nenhum",
-    'estoque': "nenhum",
-}
+produto = {}
 
-pedidoNome = input(f"insira nome do produto:")
-pedidoPreco = input(f"insira o preço do produto:")
-pedidoEstoque = input(f"insira a quantidade de estoque do produto:")
+while True:
+    nome = input("insira o nome do produto:")
+    preco = input("insira o preco do produto:")
+    estoque = input("insira a quantidade de estoque do produto:")
+    print('--------------------------------------')
 
+    produto[nome] = {
+        'preço' : preco,
+        'estoque': estoque
+    }    
+
+    sair = input('deseja continuar: (sim ou nao) ')
+    if sair == 'nao':
+        break
 
 print(produto)
