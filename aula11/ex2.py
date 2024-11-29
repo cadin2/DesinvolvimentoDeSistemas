@@ -18,4 +18,4 @@ elif pergunta == 'pedro':
 else:
     print('esse nome não existe')
     print('esses sao os alunos disponiveis')
-    print(informacoes)
+    print(informacoes) 
