@@ -1,0 +1,5 @@
+- banner
+- resumo sobre a disciplina
+- tecnologia usadas (git, mysql, mariaBD, python)
+- menu com modelagens
+- contatos (linkedin, github, email)
