@@ -9,9 +9,16 @@ seu único dono, o mesmo vale para o seu tipo, já os clientes podem ser
 cadastrados mesmo que não possuam um pet, os tipos podem ser
 registrados mesmo que não possuam pets atrelados a eles
 
-## Modelagem
+## Modelagem 1.0
 
 ![petshop](./atividade02.png)
+
+## Modelagem 1.1
+![petshop](./petshop1.1.png)
+
+## Modelagem Logica
+
+![petshop](./PetshopL.png)
 
 [Volta](../../README.md)
 
