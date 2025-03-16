@@ -22,7 +22,7 @@ A arquitetura segue os princípios de normalização para reduzir redundâncias 
 ---
 
 ## 📂 Estrutura do Banco de Dados
-- **Tabelas Principais**:
+- **Tabelas Principais**
   - **Clientes**: Armazena as informações de cadastro dos clientes, como nome, email e telefone.
   - **Produtos**: Contém os dados dos produtos cadastrados, incluindo nome, preço e estoque.
   - **Vendas**: Registra todas as transações, incluindo o cliente, os produtos vendidos e a data da venda.
@@ -41,10 +41,10 @@ A arquitetura segue os princípios de normalização para reduzir redundâncias 
 
 ## modelagens 
 
-- [petshop](./Modelagens/petshop/petshop.md)
-- [biblioteca e associados](./Modelagens/biblioteca%20e%20associados/bibliotecaAsso.md)
-- [berçario](./Modelagens/berçario/berçario.md)
-- [floricultura](./Modelagens/floricultura/floricultura.md)
-- [biblioteca de livros e autores](./Modelagens/biblioteca%20de%20livros%20e%20autores/biblioteca%20de%20livros%20e%20autores.md)
-- [pedidos de produtos](./Modelagens/pedidos%20de%20produtos/pedidos.md)
+- [petshop](./Modelagens/2-petshop/petshop.md)
+- [biblioteca e associados](./Modelagens/3-biblioteca%20e%20associados/bibliotecaAsso.md)
+- [berçario](./Modelagens/4-berçario/berçario.md)
+- [floricultura](./Modelagens/5-floricultura/floricultura.md)
+- [biblioteca de livros e autores](./Modelagens/7-biblioteca%20de%20livros%20e%20autores/biblioteca%20de%20livros%20e%20autores.md)
+- [pedidos de produtos](./Modelagens/8-pedidos%20de%20produtos/pedidos.md)
 
