@@ -8,8 +8,16 @@ deseja manter um controle, guardando informações como: nome,
 endereço, telefone e data de nascimento. Para os médicos, é importante
 saber: CRM, nome, telefone celular e especialidade.
 
-## Modelagem
+## Modelagem 1.0
 
 ![berçario](./atividade4.png)
+
+## Modelagem 1.1
+
+![berçario](./berçario1.1.png)
+
+## Modelagem Logica
+
+![berçario](berçarioL.png)
 
 [Voltar](../../README.md)

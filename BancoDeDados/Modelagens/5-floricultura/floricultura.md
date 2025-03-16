@@ -8,8 +8,16 @@ vende, tais como: nome do produto, tipo (flor, vaso, planta,...), preço e
 quantidade em estoque. Quando um cliente faz uma compra, a mesma é armazenada, mantendo informação sobre o cliente que fez a compra, a
 data da compra, o valor total e os produtos comprados.
 
-## Modelagem
+## Modelagem 1.0
 
 ![floricultura](./atividade05_corrigido.png)
+
+## Modelagem 1.1
+
+![floricultura](atividade05_corrigido.png)
+
+## Modelagem Logica
+
+![floeicultura](floriculturaL.png)
 
 [Voltar](../../README.md)

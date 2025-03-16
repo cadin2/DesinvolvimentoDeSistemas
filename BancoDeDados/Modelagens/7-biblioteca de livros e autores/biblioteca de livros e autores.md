@@ -10,8 +10,15 @@ manter um cadastro de todas as categorias existentes, com informações
 como: código da categoria e descrição. Uma categoria pode ter vários
 livros associados a ela.
 
-## Modelagem
+## Modelagem 1.0
 
-![biblioteca](./atividade07.png)
+![biblioteca](livrosBiblio1.1.png)
+
+## Modelagem 1.1
+
+![biblioteca](atividade07.png)
+
+## Modelagem Logica 
+![biblioteca](biblioteca_autorL.png)
 
 [Voltar](../../README.md)

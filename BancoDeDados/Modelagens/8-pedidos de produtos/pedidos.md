@@ -12,8 +12,16 @@ clientes. Cada pedido possui um número e guarda-se a data de
 elaboração do pedido. Cada pedido pode envolver de um a vários
 produtos, e para cada produto, indica-se a quantidade deste pedida.
 
-## Modelagem
+## Modelagem 1.0
 
 ![Pedido](atividade08.png)
+
+## Modelagem 1.1
+
+![pedido](Pedidos1.1.png)
+
+## Modelagem Logica
+
+![pedido](pedidosL.png)
 
 [Voltar](../../README.md)

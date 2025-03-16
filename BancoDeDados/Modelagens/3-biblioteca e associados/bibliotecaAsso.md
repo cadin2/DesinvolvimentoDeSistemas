@@ -16,9 +16,17 @@ abordado por vários livros. Os dados de assunto são, código e
 descrição.
 
 
-## Modelagem
+## Modelagem 1.0
 
 ![Associados](atividade03.png)
+
+## Modelagem 1.1
+
+![Associados](associados1.1.png)
+
+## Modelagem Logica
+
+![Associados](biblioteca%20e%20associados1.1.png)
 
 [Voltar](../../README.md)
 
