@@ -20,5 +20,4 @@ registrados mesmo que não possuam pets atrelados a eles
 
 ![petshop](./PetshopL.png)
 
-[Volta](../../README.md)
-
+[Voltar](/BancoDeDados/README.md)

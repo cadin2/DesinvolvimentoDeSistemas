@@ -41,10 +41,10 @@ A arquitetura segue os princípios de normalização para reduzir redundâncias 
 
 ## modelagens 
 
-- [petshop](./Modelagens/2-petshop/petshop.md)
-- [biblioteca e associados](./Modelagens/3-biblioteca%20e%20associados/bibliotecaAsso.md)
-- [berçario](./Modelagens/4-berçario/berçario.md)
-- [floricultura](./Modelagens/5-floricultura/floricultura.md)
-- [biblioteca de livros e autores](./Modelagens/7-biblioteca%20de%20livros%20e%20autores/biblioteca%20de%20livros%20e%20autores.md)
-- [pedidos de produtos](./Modelagens/8-pedidos%20de%20produtos/pedidos.md)
+- [petshop](./aula-2/atividade2/Modelagens01/2-petshop/petshop.md)
+- [biblioteca e associados](./aula-2/atividade2/Modelagens01/3-biblioteca%20e%20associados/bibliotecaAsso.md)
+- [berçario](./aula-2/atividade2/Modelagens01/4-berçario/berçario.md)
+- [floricultura](./aula-2/atividade2/Modelagens01/5-floricultura/floricultura.md)
+- [biblioteca de livros e autores](./aula-2/atividade2/Modelagens01/7-biblioteca%20de%20livros%20e%20autores/biblioteca%20de%20livros%20e%20autores.md)
+- [pedidos de produtos](./aula-2/atividade2/Modelagens01/8-pedidos%20de%20produtos/pedidos.md)
 

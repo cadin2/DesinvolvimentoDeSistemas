@@ -24,4 +24,4 @@ produtos, e para cada produto, indica-se a quantidade deste pedida.
 
 ![pedido](pedidosL.png)
 
-[Voltar](../../README.md)
+[Voltar](/BancoDeDados/README.md)
