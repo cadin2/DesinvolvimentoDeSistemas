@@ -1,43 +1,3 @@
-
-CREATE DATABASE IF NOT EXISTS dbpesquisa
-charset utf8mb4 collate utf8mb4_general_ci; 
-USE dbpesquisa;
-
-
-DROP DATABASE dbpesquisa;
-
-
-CREATE TABLE IF NOT EXISTS ruidos (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nivel INT,
-    horario TIME
-)AUTO_INCREMENT = 1;
-
-
-CREATE TABLE IF NOT EXISTS cruzamento (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    endereco VARCHAR(255),
-    nome VARCHAR(255)
-)AUTO_INCREMENT = 1;
-
-
-CREATE TABLE IF NOT EXISTS nivel_medio (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nivel_id INT,
-    horario_id TIME,
-   CONSTRAINT fk_nivel_id FOREIGN KEY (nivel_id) REFERENCES ruidos(id)
-)AUTO_INCREMENT = 1;
-
-create table if not exists relatorio(
-	id int primary key auto_increment,
-    descricao_lab varchar (60) not null,
-    contexto text not null,
-    fonte_dados text not null,
-    metodo_amostragem text,
-    eda text
-)auto_increment=1;
-
-
 INSERT INTO ruidos (nivel, horario) VALUES
 (85, '12:24'),
 (92, '12:45'),
@@ -83,22 +43,3 @@ VALUES
  'Amostragem foi feita por meio de um questionário padrão sobre níveis de estresse, humor e qualidade de vida antes e depois de um programa de exercícios físicos.',
  'A análise exploratória dos dados (EDA) revelou uma redução significativa nos níveis de estresse e uma melhora no humor dos participantes, especialmente entre aqueles que praticaram exercícios aeróbicos.'
 );
-
-select * from ruidos;
-
-select avg(nivel) as nivel_medio from ruidos;
-
-select count(nivel) as quantidade from ruidos;
-
-select sum(nivel) as soma_ruido from ruidos;
-
-select max(nivel) as max_ruido from ruidos;
-
-select min(nivel) as min_ruido from ruidos;
-
-select * from relatorio;
-select descricao_lab, contexto from relatorio where id=1;
-select * from relatorio where descricao_lab like '%saude%';
-update ruidos set nivel =85 where id=1;
-delete from ruidos where id = 5;
-    
