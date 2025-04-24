@@ -1,3 +1,6 @@
 .vscode
 venv
 __pycache__
+/Modulo4/ProjetosJava/mavenproject1/target/
+/Modulo4/ProjetosJava/bhaskara/target/
+/Modulo4/ProjetosJava/entrada/target/
