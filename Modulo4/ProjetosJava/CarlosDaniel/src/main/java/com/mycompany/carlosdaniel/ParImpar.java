@@ -14,10 +14,9 @@ public class ParImpar {
         this.number = number;
     }
     
-    
-    
     public void verificar(){
-        String resultado = (getNumber()%2 == 0)?"par":"impar";
+        String resultado = (number%2 == 0)?"par":"impar";
+        System.out.println(resultado);
     }
     
 }

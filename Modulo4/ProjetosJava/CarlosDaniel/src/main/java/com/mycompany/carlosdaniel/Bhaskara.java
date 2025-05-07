@@ -1,28 +1,12 @@
 package com.mycompany.carlosdaniel;
+
 public class Bhaskara {
     private double a,b,c;
     
-    public Bhaskara(double a ,double b ,double c){
+    public Bhaskara(){
         this.a = a;
         this.b = b;
         this.c = c;
-    }
-    public void resolver(){
-        double delta = Math.pow(2, getB()) - 4*getA()*getC();
-        
-        if (delta < 0){
-            System.out.println("nao existe raiz");
-        }
-        else if (delta == 0){
-            double x = -getB() + Math.sqrt(delta)/2*getA();
-            System.out.format("as raizes sao iguais: %.2f ",x);
-        }
-        else{
-           double x1 = -getB() + Math.sqrt(delta)/2;
-           double x2 = -getB() - Math.sqrt(delta)/2;
-           
-            System.out.format("delta: %.2f\nx1: %.2f\nx2: %.2f",delta,x1,x2);
-        }
     }
 
     public double getA() {
@@ -48,7 +32,25 @@ public class Bhaskara {
     public void setC(double c) {
         this.c = c;
     }
-}
 
+
+    public  void resolver(double a,double b,double c){
+        double delta = Math.pow(2, b) - 4*a*c;
+        
+        if (delta < 0){
+            System.out.println("nao existe raiz");
+        }
+        else if (delta == 0){
+            double x = -b + Math.sqrt(delta)/2*a;
+            System.out.format("as raizes sao iguais: %.2f ",x);
+        }
+        else{
+           double x1 = -b + Math.sqrt(delta)/2;
+           double x2 = -b - Math.sqrt(delta)/2;
+           
+            System.out.format("delta: %.2f\nx1: %.2f\nx2: %.2f",delta,x1,x2);
+        }
+    }
+}
 
 

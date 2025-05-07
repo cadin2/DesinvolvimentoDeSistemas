@@ -8,7 +8,7 @@ package com.mycompany.carlosdaniel;
  *
  * @author ead
  */
-public class triangulo {
+public class Triangulo {
     private int a,b,c;
 
     public int getA() {
@@ -41,7 +41,7 @@ public class triangulo {
         this.c=c;
     }
     
-    void verificar(){
+    void verificar(int a, int b, int c){
         if(a == b && b == c && c == a){
             System.out.println("equilatero");
         }
