@@ -1,7 +1,5 @@
 package com.mycompany.polimorfismo2;
-public abstract class Mamifero {
-    public abstract void emitirSom(){
-        
-    }
-    
+interface Mamifero {
+    public abstract void emitirSom();
+    public abstract void reagir();
 }

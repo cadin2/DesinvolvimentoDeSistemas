@@ -1,29 +1,29 @@
-create database if not exists Produto
+create database if not exists Produtos
 charset utf8mb4 collate utf8mb4_general_ci;
-
-use Produto;
+ drop database Produtos;
+use Produtos;
 
 CREATE TABLE Produto (
     id_produto INT PRIMARY KEY,
-    nome VARCHAR(100),
-    preco_custo DECIMAL(10,2),
-    margem_lucro DECIMAL(5,2),
-    porcentagem_ifood DECIMAL(5,2)
+    nome VARCHAR(255),
+    preco_custo FLOAT(4,2),
+    margem_lucro FLOAT(4,2),
+    porcentagem_ifood FLOAT(4,2)
 );
 
 
 CREATE TABLE Entrega (
     id_entrega INT PRIMARY KEY,
     id_produto INT,
-    valor_entrega DECIMAL(10,2),
+    valor_entrega FLOAT(4,2),
     FOREIGN KEY (id_produto) REFERENCES Produto(id_produto)
 );
 
 
 CREATE TABLE Combo (
     id_combo INT PRIMARY KEY,
-    nome_combo VARCHAR(100),
-    preco_combo DECIMAL(10,2)
+    nome_combo VARCHAR(255),
+    preco_combo FLOAT(4,2)
 );
 
 CREATE TABLE ProdutoCombo (
@@ -36,15 +36,16 @@ CREATE TABLE ProdutoCombo (
 
 
 INSERT INTO Produto (id_produto, nome, preco_custo, margem_lucro, porcentagem_ifood) VALUES 
-(1, 'Sanduíche de Frango', 10.00, 30.00, 15.00),
-(2, 'Lanche de Carne', 12.00, 30.00, 20.00),
-(3, 'Suco Natural', 4.00, 30.00, 10.00);
+(1, 'Sanduíche de Frango', 10, 30, 15),
+(2, 'Lanche de Carne', 12, 30, 20),
+(3, 'Suco Natural', 4, 30, 10);
 
 
 INSERT INTO Entrega (id_entrega, id_produto, valor_entrega) VALUES
 (1, 1, 5.00),
 (2, 2, 5.00),
 (3, 3, 5.00);
+
 
 INSERT INTO Combo (id_combo, nome_combo, preco_combo) VALUES
 (1, 'Combo Frango + Suco', 22.00);
@@ -80,28 +81,24 @@ JOIN Produto P ON PC.id_produto = P.id_produto
 JOIN Entrega E ON P.id_produto = E.id_produto
 GROUP BY C.nome_combo, C.preco_combo;
 
-create view Produtos as 
-select 
-	P.id_produto,
-    P.nome as nome_produto,
-    P.preco_custo ,
-    P.margem_lucro ,
+CREATE VIEW ProdutoCompleto AS
+SELECT 
+    P.id_produto,
+    P.nome AS nome_produto,
+    P.preco_custo,
+    P.margem_lucro,
     P.porcentagem_ifood,
-    (P.preco_custo * (1 + p.margem_lucro/ 100)) as preco_venda,
-    (P.preco_custo * (1 + p.margem_lucro/ 100)) * (P.porcentagem_ifood/100) as valor_ifood,
-    E.valor_entrega, 
+    (P.preco_custo * (1 + P.margem_lucro / 100)) AS preco_venda,
+    (P.preco_custo * (1 + P.margem_lucro / 100)) * (P.porcentagem_ifood / 100) AS valor_ifood,
+    E.valor_entrega,
     C.id_combo,
     C.nome_combo,
     C.preco_combo
-
+    
 FROM Produto P
 LEFT JOIN Entrega E ON P.id_produto = E.id_produto
 LEFT JOIN ProdutoCombo PC ON P.id_produto = PC.id_produto
 LEFT JOIN Combo C ON PC.id_combo = C.id_combo;
 
-SELECT *FROM Produtos;
-
-    
-    
-    
+select * from ProutoCompleto;
 
