@@ -1,4 +1,4 @@
-create database if not exists Cadstro;
+create database Cadastro;
 use Cadastro;
 
 create table usuarios(
@@ -8,3 +8,6 @@ create table usuarios(
     telefone varchar(20),
     tipo_usuario varchar(50)
     )auto_increment=1;
+    
+    select * from usuarios;
+    

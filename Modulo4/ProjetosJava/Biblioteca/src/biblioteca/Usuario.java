@@ -1,4 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package biblioteca;
+
+/**
+ *
+ * @author ead
+ */
 public class Usuario {
     private int id;
     private String nome;
@@ -16,8 +25,6 @@ public class Usuario {
 
     public Usuario() {
     }
-    
-    
     
     public int getId() {
         return id;
@@ -58,6 +65,7 @@ public class Usuario {
     public void setTipo_usuario(String tipo_usuario) {
         this.tipo_usuario = tipo_usuario;
     }
+    
     
     
 }

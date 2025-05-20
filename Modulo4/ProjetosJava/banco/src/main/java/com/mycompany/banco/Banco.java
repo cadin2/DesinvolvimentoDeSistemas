@@ -1,10 +1,10 @@
 package com.mycompany.banco;
-
 public class Banco {
 
     public static void main(String[] args) {
+        ContaBanco Cb = new ContaBanco(0, "CC", "carlin", 0, "Activada");
         
-        
-        contabanco conta = new contabanco(dono, 0, Boolean.TRUE, 0, 0);
+        Cb.abrirConta();
+                
     }
 }
