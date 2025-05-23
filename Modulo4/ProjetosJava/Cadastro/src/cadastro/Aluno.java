@@ -1,0 +1,34 @@
+package cadastro;
+import java.sql.*;
+import java.util.*;
+import javax.swing.*;
+
+public class Aluno {
+    private String curso, matricula;
+
+    public Aluno() {
+    }
+
+    public Aluno(String curso, String matricula) {
+        this.curso = curso;
+        this.matricula = matricula;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    
+    
+}

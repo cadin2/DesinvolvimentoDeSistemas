@@ -16,11 +16,7 @@ import java.util.List;
 public class UsuarioDAO {
     private Connection connection;
     
-    public UsuarioDAO() {
-        this.connection = new ConnectionFactory().connectaBD();
-    }
-    
-    public UsuarioDAO(Connection connection) {
+            public UsuarioDAO() {
         this.connection = new ConnectionFactory().connectaBD();
     }
     
