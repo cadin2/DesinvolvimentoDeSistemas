@@ -1,6 +1,6 @@
-create database if not exists Login;
+create database if not exists db_login;
 drop database login;
-use Login;
+use db_login;
 create table if not exists Pessoa(
 	id int primary key auto_increment,
     nome varchar(20),

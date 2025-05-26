@@ -1,6 +1,6 @@
 package cadastro;
 
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Cadastro {
     public static void main(String[] args) {
@@ -25,6 +25,12 @@ public class Cadastro {
 //        }catch(SQLException e){
 //            System.out.println("Erro: "+e.getMessage());
 //        }
+
+        try {
+            alun.listarUsuarios();
+        } catch (SQLException e) {
+            System.out.println("erro: "+e.getMessage());
+        }
         
     }
     

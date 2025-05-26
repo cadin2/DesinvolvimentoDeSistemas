@@ -9,5 +9,10 @@ class Lobo implements Mamifero{
     public void emitirSom() {
         System.out.println("auuuuuuuuuu");
     }
+
+    @Override
+    public void reagir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

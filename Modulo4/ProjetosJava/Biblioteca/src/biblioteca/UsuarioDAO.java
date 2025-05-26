@@ -153,6 +153,7 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("ERROR: "+e.getMessage());
         } finally {
+            
         }
     }
 }

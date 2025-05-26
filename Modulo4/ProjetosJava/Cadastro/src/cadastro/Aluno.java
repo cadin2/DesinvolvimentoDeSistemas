@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Aluno {
+public class Aluno extends Pessoa{
     private String curso, matricula;
 
     public Aluno() {
