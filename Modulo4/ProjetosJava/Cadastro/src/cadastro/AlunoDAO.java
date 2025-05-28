@@ -4,19 +4,23 @@ import java.sql.*;
 import java.util.*;
 import javax.swing.*;
 
-//import java.util.*;
-//import javax.swing.*;
-
 public class AlunoDAO {
     private Connection con;
+
+    public AlunoDAO(Connection con) {
+        this.con = new CF().ConectDB();
+    }
 
     public AlunoDAO() {
         this.con = new CF().ConectDB();
     }
     
-    public void criarPessoa(Pessoa pessoa) throws SQLException{
-        String sql = "insert into Pessoa(nome,endereco,sexo,cpf)"
-                + "values(?,?,?,?);";
+    
+    
+    
+    public void criarPessoa(Aluno pessoa) throws SQLException{
+        String sql = "insert into Pessoa(nome,endereco,sexo,cpf,curso,matricula)"
+                + "values(?,?,?,?,?,?);";
         PreparedStatement pstm;
             pstm = null;
         
@@ -28,6 +32,9 @@ public class AlunoDAO {
             pstm.setString(2, pessoa.getEndereco());
             pstm.setString(3, pessoa.getSexo());
             pstm.setString(4, pessoa.getCpf());
+            pstm.setString(5, pessoa.getCurso());
+            pstm.setString(6, pessoa.getMatricula());
+            
             
             pstm.executeUpdate();
             
@@ -56,9 +63,9 @@ public class AlunoDAO {
         
     }
     
-    public List<Pessoa> listarUsuarios() throws SQLException{
+    public List<Aluno> listarUsuarios() throws SQLException{
         
-        List<Pessoa> lista = new ArrayList<>();
+        List<Aluno> lista = new ArrayList<>();
         
         String sql = "SELECT * FROM Pessoa";
         
@@ -73,14 +80,16 @@ public class AlunoDAO {
             rs = pstm.executeQuery();
             
             while (rs.next()) {
-                Pessoa Aluno = new Pessoa();
+                Aluno pessoa = new Aluno();
                 
-                Aluno.setId(rs.getInt("id"));
-                Aluno.setNome(rs.getString("nome"));
-                Aluno.setCpf(rs.getString("Cpf"));
-                Aluno.setEndereco(rs.getString("Endereco"));
-                Aluno.setSexo(rs.getString("Sexo"));
-                lista.add(Aluno);
+                pessoa.setId(rs.getInt("id"));
+                pessoa.setNome(rs.getString("nome"));
+                pessoa.setCpf(rs.getString("Cpf"));
+                pessoa.setEndereco(rs.getString("Endereco"));
+                pessoa.setSexo(rs.getString("Sexo"));
+                pessoa.setCurso(rs.getString("Curso"));
+                pessoa.setMatricula(rs.getString("Matricula"));
+                lista.add(pessoa);
             }
         } catch (SQLException e) {
             System.out.println("ERRO: "+e.getMessage());
@@ -94,14 +103,14 @@ public class AlunoDAO {
         return lista;
     }
     
-    public Pessoa bucasALunoporId(int id) throws SQLException{
+    public Aluno bucasALunoporId(int id) throws SQLException{
         String sql = "SELECT * FROM Pessoa WHERE id=?";
         
         PreparedStatement pstm;
             pstm = null;
           
         ResultSet rs = null;
-        Pessoa usuario = null;
+        Aluno usuario = null;
         
         try {
             pstm = con.prepareStatement(sql);
@@ -109,13 +118,15 @@ public class AlunoDAO {
             rs = pstm.executeQuery();
             
             if (rs.next()){
-                usuario = new Pessoa();
-                
+                usuario = new Aluno();               
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setCpf(rs.getString("Cpf"));
                 usuario.setEndereco(rs.getString("Endereco"));
                 usuario.setSexo(rs.getString("Sexo"));
+                usuario.setCurso(rs.getString("Curso"));
+                usuario.setMatricula(rs.getString("Matricula"));
+                
             }
             
         } catch (SQLException e) {
@@ -130,9 +141,9 @@ public class AlunoDAO {
         
     }
     
-     public void atualizarUsuario(Pessoa usuario) throws SQLException{
-        String sql = "UPDATE Pessoa SET nome = ?, telefone = ? , "
-                + "tipo_usuario = ? WHERE id = ? ";
+     public void atualizarUsuario(Aluno usuario) throws SQLException{
+        String sql = "UPDATE Pessoa SET nome = ?, endereco = ? , "
+                + "cpf = ?, curso = ? WHERE id = ? ";
         
         PreparedStatement pstmt;
             pstmt = null;
