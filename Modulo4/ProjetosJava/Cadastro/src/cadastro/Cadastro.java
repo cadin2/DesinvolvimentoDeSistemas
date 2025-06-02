@@ -35,28 +35,28 @@ public class Cadastro {
 //            System.out.println("Erro: "+e.getMessage());
 //        }
             //Listar Alunos
-//        try {
-//            List<Aluno> listAl = new AlunoDAO().listarUsuarios(); 
-//            if(listAl.isEmpty()){
-//                JOptionPane.showMessageDialog(null,
-//                        "Nao ha nenhum aluno",
-//                        "erro",
-//                        JOptionPane.WARNING_MESSAGE);
-//            }else{
-//                for(Aluno aluno : listAl){
-//                    System.out.println("Id: " + aluno.getId());
-//                    System.out.println("Nome: " + aluno.getNome());
-//                    System.out.println("Endereco: " + aluno.getEndereco());
-//                    System.out.println("Sexo: " + aluno.getSexo());
-//                    System.out.println("Cpf: " + aluno.getCpf());
-//                    System.out.println("Curso: " + aluno.getCurso());
-//                    System.out.println("Matricula: " + aluno.getMatricula());
-//                    System.out.println("__________________________________________________");
-//                }
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("erro: "+e.getMessage());
-//        }
+        try {
+            List<Aluno> listAl = new AlunoDAO().listarUsuarios(); 
+            if(listAl.isEmpty()){
+                JOptionPane.showMessageDialog(null,
+                        "Nao ha nenhum aluno",
+                        "erro",
+                        JOptionPane.WARNING_MESSAGE);
+            }else{
+                for(Aluno aluno : listAl){
+                    System.out.println("Id: " + aluno.getId());
+                    System.out.println("Nome: " + aluno.getNome());
+                    System.out.println("Endereco: " + aluno.getEndereco());
+                    System.out.println("Sexo: " + aluno.getSexo());
+                    System.out.println("Cpf: " + aluno.getCpf());
+                    System.out.println("Curso: " + aluno.getCurso());
+                    System.out.println("Matricula: " + aluno.getMatricula());
+                    System.out.println("__________________________________________________");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("erro: "+e.getMessage());
+        }
 //        
         //buscar alunos
 //        try{
