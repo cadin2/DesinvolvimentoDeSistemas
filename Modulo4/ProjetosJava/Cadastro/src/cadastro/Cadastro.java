@@ -59,30 +59,7 @@ public class Cadastro {
         }
 //        
         //buscar alunos
-//        try{
-//            int idBucador =5;           
-//            Aluno pamonhha =  alun.bucasALunoporId(idBucador);
-//
-//            if(pamonhha!= null){
-//                System.out.println("O usuario foi encontrado");
-//
-//
-//                System.out.println("ID: "+pamonhha.getId());
-//                System.out.println("Nome: "+pamonhha.getNome());
-//                System.out.println("Endereco: "+pamonhha.getEndereco());
-//                System.out.println("Sexo: "+pamonhha.getSexo());
-//                System.out.println("Cpf: "+pamonhha.getCpf());
-//                System.out.println("Curso: "+pamonhha.getCurso());
-//                System.out.println("Matricula: "+pamonhha.getMatricula());
-//                System.out.println("________________X_______________");
-//            }
-//        else{
-//            System.out.println("O usuario não foi encontrado -> id:"+idBucador);
-//        } 
-//        }catch (SQLException e) {
-//            System.out.println("Erro: "+e.getMessage());
-//        }
-        
+      
           //atualizar aluno
           Connection con = null;
           

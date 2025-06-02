@@ -4,6 +4,11 @@
  */
 package cadastro;
 
+import java.sql.SQLException;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ead
@@ -26,40 +31,147 @@ public class ListarJF extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaL = new javax.swing.JTable();
+        tabelaLista = new javax.swing.JTable();
+        textBusca = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        pesquisaB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabelaL.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
+        tabelaLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Endereco", "Cpf", "Sexo", "Curso", "Matricula"
+                "id", "Nome", "Endereco", "Cpf", "Sexo", "Curso", "Matricula"
             }
         ));
-        jScrollPane2.setViewportView(tabelaL);
+        tabelaLista.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaListaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane2.setViewportView(tabelaLista);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        textBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBuscaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Pesquisa por ID:");
+
+        pesquisaB.setText("Pesquisar");
+        pesquisaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisaBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pesquisaB)))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pesquisaB))
+                .addGap(23, 23, 23)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tabelaListaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaListaAncestorAdded
+        
+
+    }//GEN-LAST:event_tabelaListaAncestorAdded
+
+    private void textBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBuscaActionPerformed
+
+    private void pesquisaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaBActionPerformed
+        // TODO add your handling code here:
+            ListarJF listajf = new ListarJF();
+            Aluno alun = new Aluno();
+            AlunoDAO alunDAO = new AlunoDAO();
+            try{
+                DefaultTableModel  modelotabela1 =  (DefaultTableModel) listajf.tabelaLista.getModel();
+                modelotabela1.setRowCount(0);
+                String idBucador = textBusca.getText();
+            
+                int idB = Integer.parseInt(idBucador);
+                Aluno alunoBuscar = alunDAO.bucasALunoporId(idB);
+                
+                
+            if(alunoBuscar!= null){
+                modelotabela1.addRow(new Object[]{
+                    alun.getId(),
+                    alun.getNome(),
+                    alun.getEndereco(),
+                    alun.getCpf(),
+                    alun.getSexo(),
+                    alun.getCurso(),
+                    alun.getMatricula()
+                });
+                
+            }
+        else{
+            System.out.println("O usuario não foi encontrado -> id:"+idBucador);
+        } 
+        }catch (SQLException e) {
+            System.out.println("Erro: "+e.getMessage());
+        }
+  
+    }//GEN-LAST:event_pesquisaBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,8 +208,29 @@ public class ListarJF extends javax.swing.JFrame {
         });
     }
 
+    public JTable getTabelaLista() {
+        return tabelaLista;
+    }
+
+    public void setTabelaLista(JTable tabelaLista) {
+        this.tabelaLista = tabelaLista;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabelaL;
+    private javax.swing.JButton pesquisaB;
+    private javax.swing.JTable tabelaLista;
+    private javax.swing.JTextField textBusca;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getPesquisaB() {
+        return pesquisaB;
+    }
+
+    public void setPesquisaB(JButton pesquisaB) {
+        this.pesquisaB = pesquisaB;
+    }
+
 }
