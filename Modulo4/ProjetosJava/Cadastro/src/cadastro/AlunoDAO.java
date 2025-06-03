@@ -3,6 +3,8 @@ package cadastro;
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
 
 public class AlunoDAO {
     private Connection con;
@@ -103,31 +105,49 @@ public class AlunoDAO {
         return lista;
     }
     
-    public Aluno bucasALunoporId(int id) throws SQLException{
-        String sql = "SELECT * FROM Pessoa WHERE id=?";
-        
+    public Aluno bucasALunoporId(String nome) throws SQLException{
+        Connection con = null;
         PreparedStatement pstm;
-            pstm = null;
-          
+        pstm = null;
         ResultSet rs = null;
         Aluno usuario = null;
+        ListarJF lis = new ListarJF();
         
         try {
+            CF cf = new CF();
+            con = cf.ConectDB();
+            String sql = "SELECT nome, endereco, sexo, cpf, curso, matricula FROM Pessoa WHERE nome=?";
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, id);
+            pstm.setString(1, nome);
             rs = pstm.executeQuery();
             
+            DefaultTableModel tm = new DefaultTableModel();
+            
+            tm.addColumn("Nome");
+            tm.addColumn("Endereco");
+            tm.addColumn("Cpf");
+            tm.addColumn("Sexo");
+            tm.addColumn("Curso");
+            tm.addColumn("Matricula");
+            
             if (rs.next()){
-                usuario = new Aluno();               
-                usuario.setId(rs.getInt("id"));
-                usuario.setNome(rs.getString("nome"));
-                usuario.setCpf(rs.getString("Cpf"));
-                usuario.setEndereco(rs.getString("Endereco"));
-                usuario.setSexo(rs.getString("Sexo"));
-                usuario.setCurso(rs.getString("Curso"));
-                usuario.setMatricula(rs.getString("Matricula"));
-                
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("Nome"));
+                row.add(rs.getString("Endereco"));
+                row.add(rs.getString("Cpf"));
+                row.add(rs.getString("Sexo"));
+                row.add(rs.getString("Curso"));
+                row.add(rs.getString("Matricula"));
+                tm.addRow(row);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Nenhum aluno encontrado com o nome: " + nome,
+                        "Informação",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
+            
+            lis.getTabelaLista().setModel(tm);
+            
             
         } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());

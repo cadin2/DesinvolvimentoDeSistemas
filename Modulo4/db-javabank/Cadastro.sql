@@ -1,6 +1,6 @@
 create database Cadastro;
 use Cadastro;
-
+DROP database Cadastro;
 create table usuarios(
 	id int auto_increment primary key,
     nome varchar (100),

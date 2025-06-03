@@ -391,7 +391,6 @@ public class CadastroJ extends javax.swing.JFrame {
                 List<Aluno> aluno = alunDAO.listarUsuarios();
                 for(Aluno u : aluno){
                     modeloT.addRow(new Object[]{
-                        u.getId(),
                         u.getNome(),
                         u.getEndereco(),
                         u.getCpf(),
