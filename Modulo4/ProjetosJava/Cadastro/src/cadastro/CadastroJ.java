@@ -376,6 +376,7 @@ public class CadastroJ extends javax.swing.JFrame {
         listarL.setVisible(true);
         
         
+        
             try {
             List<Aluno> listAl = new AlunoDAO().listarUsuarios(); 
             if(listAl.isEmpty()){

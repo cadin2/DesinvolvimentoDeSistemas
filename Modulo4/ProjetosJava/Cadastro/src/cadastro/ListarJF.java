@@ -4,7 +4,12 @@
  */
 package cadastro;
 
+import cadastro.Aluno;
+import cadastro.AlunoDAO;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -38,7 +43,7 @@ public class ListarJF extends javax.swing.JFrame {
         textBusca = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         pesquisaB = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        voltarB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,30 +100,33 @@ public class ListarJF extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        voltarB.setText("Voltar");
+        voltarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pesquisaB)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(voltarB)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(textBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(pesquisaB))))))
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +139,9 @@ public class ListarJF extends javax.swing.JFrame {
                     .addComponent(pesquisaB))
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(voltarB)
+                .addContainerGap())
         );
 
         pack();
@@ -149,17 +157,45 @@ public class ListarJF extends javax.swing.JFrame {
     }//GEN-LAST:event_textBuscaActionPerformed
 
     private void pesquisaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaBActionPerformed
-        // TODO add your handling code here:
-//            try{
-//             
-//        }catch (SQLException e) {
-//                JOptionPane.showMessageDialog(null,
-//                        "erro: "+e.getMessage(),
-//                        "Informação", 
-//                        JOptionPane.WARNING_MESSAGE);
-//        }
-  
+        AlunoDAO dao = new AlunoDAO();
+        String nomealuno = textBusca.getText();
+        DefaultTableModel modelo = (DefaultTableModel) tabelaLista.getModel();
+        modelo.setRowCount(0);
+        try {
+            List<Aluno> lista = dao.bucasALunoporId(nomealuno);
+            
+            for (Aluno a : lista){
+                modelo.addRow(new Object[]{
+                a.getNome(),
+                a.getEndereco(),
+                a.getSexo(),
+                a.getCpf(),
+                a.getCurso(),
+                a.getMatricula()
+                });
+            } 
+            if (lista.isEmpty()){
+                JOptionPane.showMessageDialog(null,
+                        "ninguem foi encontrado",
+                        "informação",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "erro: "+ex.getMessage(),
+                    "erro",
+                    JOptionPane.WARNING_MESSAGE);
+        } 
     }//GEN-LAST:event_pesquisaBActionPerformed
+
+    private void voltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBActionPerformed
+        
+        setDefaultCloseOperation(ListarJF.DISPOSE_ON_CLOSE);
+        
+//        if (frame.setVisible(true)){
+//            
+//        }
+    }//GEN-LAST:event_voltarBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,13 +241,13 @@ public class ListarJF extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton pesquisaB;
     private javax.swing.JTable tabelaLista;
     private javax.swing.JTextField textBusca;
+    private javax.swing.JButton voltarB;
     // End of variables declaration//GEN-END:variables
 
     public JButton getPesquisaB() {

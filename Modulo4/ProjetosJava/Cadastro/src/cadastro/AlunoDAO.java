@@ -105,48 +105,39 @@ public class AlunoDAO {
         return lista;
     }
     
-    public Aluno bucasALunoporId(String nome) throws SQLException{
+    public List<Aluno> bucasALunoporId(String nome) throws SQLException{
+        List<Aluno> listaA = new ArrayList<>();
+        String sql = "SELECT * FROM Pessoa WHERE nome like ?";
         Connection con = null;
         PreparedStatement pstm;
         pstm = null;
         ResultSet rs = null;
         Aluno usuario = null;
-        ListarJF lis = new ListarJF();
+        CF cf = new CF();
+        con = cf.ConectDB();
+        AlunoDAO alunodao = new AlunoDAO();
         
         try {
-            CF cf = new CF();
-            con = cf.ConectDB();
-            String sql = "SELECT nome, endereco, sexo, cpf, curso, matricula FROM Pessoa WHERE nome=?";
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, nome);
+            pstm.setString(1,"%"+ nome+"%");
             rs = pstm.executeQuery();
+            List<Aluno> alunos = new ArrayList<>();
             
-            DefaultTableModel tm = new DefaultTableModel();
             
-            tm.addColumn("Nome");
-            tm.addColumn("Endereco");
-            tm.addColumn("Cpf");
-            tm.addColumn("Sexo");
-            tm.addColumn("Curso");
-            tm.addColumn("Matricula");
             
-            if (rs.next()){
-                Vector<Object> row = new Vector<>();
-                row.add(rs.getString("Nome"));
-                row.add(rs.getString("Endereco"));
-                row.add(rs.getString("Cpf"));
-                row.add(rs.getString("Sexo"));
-                row.add(rs.getString("Curso"));
-                row.add(rs.getString("Matricula"));
-                tm.addRow(row);
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Nenhum aluno encontrado com o nome: " + nome,
-                        "Informação",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
+            while (rs.next()) {
+                Aluno aluno = new Aluno();
+                aluno.setNome(rs.getString("nome"));
+                aluno.setEndereco(rs.getString("endereco"));
+                aluno.setSexo(rs.getString("sexo"));
+                aluno.setCpf(rs.getString("cpf"));
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setMatricula(rs.getString("matricula"));
+                listaA.add(aluno);
+                }
             
-            lis.getTabelaLista().setModel(tm);
+            
+            
             
             
         } catch (SQLException e) {
@@ -157,9 +148,10 @@ public class AlunoDAO {
                 pstm.close();
             }    
         }
-        return usuario;
-        
-    }
+        return listaA;   
+}
+
+    
     
      public void atualizarUsuario(Aluno usuario) throws SQLException{
         String sql = "UPDATE Pessoa SET nome = ?, endereco = ? , "
