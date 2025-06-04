@@ -37,6 +37,8 @@ public class ListarJF extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaLista = new javax.swing.JTable();
@@ -44,6 +46,7 @@ public class ListarJF extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pesquisaB = new javax.swing.JButton();
         voltarB = new javax.swing.JButton();
+        AtualizarA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,25 +110,36 @@ public class ListarJF extends javax.swing.JFrame {
             }
         });
 
+        AtualizarA.setText("Atualizar ");
+        AtualizarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(voltarB)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(26, 26, 26)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(textBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(pesquisaB))))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(voltarB)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(textBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pesquisaB))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(AtualizarA, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -139,7 +153,9 @@ public class ListarJF extends javax.swing.JFrame {
                     .addComponent(pesquisaB))
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AtualizarA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(voltarB)
                 .addContainerGap())
         );
@@ -189,13 +205,30 @@ public class ListarJF extends javax.swing.JFrame {
     }//GEN-LAST:event_pesquisaBActionPerformed
 
     private void voltarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBActionPerformed
+        this.dispose();
+        CadastroJ cadastroF = new CadastroJ();
+        cadastroF.dispose();
         
-        setDefaultCloseOperation(ListarJF.DISPOSE_ON_CLOSE);
         
-//        if (frame.setVisible(true)){
-//            
-//        }
+        
+        
     }//GEN-LAST:event_voltarBActionPerformed
+
+    private void AtualizarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarAActionPerformed
+        AtualizarJF atualizarF = new AtualizarJF();
+        int ls = tabelaLista.getSelectedRow();
+        
+        if(ls == -1){
+            JOptionPane.showMessageDialog(this,
+                    "Selecione o aluno que deseja alterar!!",
+                    "Selecione o Aluno",
+                    JOptionPane.INFORMATION_MESSAGE);
+            atualizarF.dispose();
+        }else{
+            atualizarF.setVisible(true);
+            
+        }
+    }//GEN-LAST:event_AtualizarAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,8 +274,11 @@ public class ListarJF extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AtualizarA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton pesquisaB;
     private javax.swing.JTable tabelaLista;
