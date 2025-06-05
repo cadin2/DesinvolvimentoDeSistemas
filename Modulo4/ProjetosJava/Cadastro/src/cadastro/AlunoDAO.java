@@ -153,9 +153,9 @@ public class AlunoDAO {
 
     
     
-     public void atualizarUsuario(Aluno usuario) throws SQLException{
+     public void atualizarUsuario(String nomeA, String nomeN, String enderecoN, String cpfN,String sexoN,String cursoN,String matriculaN) throws SQLException{
         String sql = "UPDATE Pessoa SET nome = ?, endereco = ? , "
-                + "cpf = ?, curso = ? WHERE id = ? ";
+                + "cpf = ?, sexo = ?, curso = ?, matricula = ? WHERE nome = ?;";
         
         PreparedStatement pstmt;
             pstmt = null;
@@ -164,15 +164,27 @@ public class AlunoDAO {
             
             pstmt = con.prepareStatement(sql);
            
-            pstmt.setString(1,usuario.getNome());
+            pstmt.setString(1, nomeN);
+            pstmt.setString(2, enderecoN);
+            pstmt.setString(3, cpfN);
+            pstmt.setString(4, sexoN);
+            pstmt.setString(5, cursoN);
+            pstmt.setString(6, matriculaN);
+            pstmt.setString(7, nomeA);
 
             
             int linhaAfetadas = pstmt.executeUpdate();
             
             if (linhaAfetadas > 0) {
-                System.out.println("Leitura concluida");
+                JOptionPane.showMessageDialog(null, 
+                        "Atualizado com sucesso!",
+                        "Sucesso!",
+                        JOptionPane.INFORMATION_MESSAGE);
             } else {
-                System.out.println("Usuario não foi encontrado");
+                JOptionPane.showMessageDialog(null, 
+                        "Usuario nao foi encontrado!",
+                        "Nada encontrado",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
             
         } catch (SQLException e) {

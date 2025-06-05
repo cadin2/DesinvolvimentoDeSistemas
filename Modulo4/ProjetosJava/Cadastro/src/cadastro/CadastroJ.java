@@ -316,6 +316,7 @@ public class CadastroJ extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private final AlunoDAO alunDAO = new AlunoDAO();
 
     private void enderecoTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoTActionPerformed
         // TODO add your handling code here:
@@ -336,7 +337,6 @@ public class CadastroJ extends javax.swing.JFrame {
     private void cpfTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpfTActionPerformed
-    private final AlunoDAO alunDAO = new AlunoDAO();
     
     private void btPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPActionPerformed
         String nome = nomeT.getText().trim();
@@ -475,4 +475,12 @@ public class CadastroJ extends javax.swing.JFrame {
     private javax.swing.JTextField nomeT;
     private javax.swing.JComboBox<String> sexoT;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getSexoT() {
+        return sexoT;
+    }
+
+    public void setSexoT(JComboBox<String> sexoT) {
+        this.sexoT = sexoT;
+    }
 }

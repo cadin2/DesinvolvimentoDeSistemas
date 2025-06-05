@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxEditor;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -216,7 +217,9 @@ public class ListarJF extends javax.swing.JFrame {
 
     private void AtualizarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarAActionPerformed
         AtualizarJF atualizarF = new AtualizarJF();
+        CadastroJ cadastroj = new CadastroJ();
         int ls = tabelaLista.getSelectedRow();
+        int items = cadastroj.getSexoT().getSelectedIndex();
         
         if(ls == -1){
             JOptionPane.showMessageDialog(this,
@@ -226,6 +229,21 @@ public class ListarJF extends javax.swing.JFrame {
             atualizarF.dispose();
         }else{
             atualizarF.setVisible(true);
+            String nome = (String) tabelaLista.getValueAt(ls, 0).toString();
+            atualizarF.getNomeAJ().setText(nome);
+            
+            String endereco = (String) tabelaLista.getValueAt(ls, 1).toString();
+            atualizarF.getEnderecoAJ().setText(endereco);
+            
+            String cpf = (String) tabelaLista.getValueAt(ls, 2).toString();
+            atualizarF.getCpfAJ().setText(cpf);
+            
+            String curso = (String) tabelaLista.getValueAt(ls, 4).toString();
+            atualizarF.getCursoAJ().setText(curso);
+            
+            String matricula = (String) tabelaLista.getValueAt(ls, 5).toString();
+            atualizarF.getMatriculaAJ().setText(matricula);
+            
             
         }
     }//GEN-LAST:event_AtualizarAActionPerformed

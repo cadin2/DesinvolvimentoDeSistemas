@@ -4,6 +4,11 @@
  */
 package cadastro;
 
+import java.sql.SQLException;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author ead
@@ -53,6 +58,8 @@ public class AtualizarJF extends javax.swing.JFrame {
         matriculaAJ = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         sexoCB = new javax.swing.JComboBox<>();
+        salvarAJ = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -192,10 +199,24 @@ public class AtualizarJF extends javax.swing.JFrame {
 
         jLabel11.setText("Sexo");
 
-        sexoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Slecione o item", "Feminino", "Masculino", "Prefiro nao dizer" }));
+        sexoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um item", "Feminino", "Masculino", "Prefiro nao dizer" }));
         sexoCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoCBActionPerformed(evt);
+            }
+        });
+
+        salvarAJ.setText("salvar");
+        salvarAJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarAJActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("voltar ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -225,6 +246,15 @@ public class AtualizarJF extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(sexoCB, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(88, 88, 88))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(salvarAJ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +283,11 @@ public class AtualizarJF extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(sexoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(salvarAJ)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -317,6 +351,49 @@ public class AtualizarJF extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoCBActionPerformed
 
+    private void salvarAJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarAJActionPerformed
+        ListarJF list = new ListarJF();
+        int ls = list.getTabelaLista().getSelectedRow();
+        String nomeAn = list.getTabelaLista().getValueAt(ls, 0).toString();
+        // TODO add your handling code here:
+        
+        try{
+            String nome = nomeAJ.getText().trim();
+            String endereco = enderecoAJ.getText().trim();
+            String cpf = cpfAJ.getText().trim();
+            String sexo = (String) sexoCB.getSelectedItem();
+            String curso = cursoAJ.getText().trim();
+            String matricula = matriculaAJ.getText().trim();
+            
+            if(nome.isEmpty() || endereco.isEmpty() || cpf.isEmpty() || curso.isEmpty() || matricula.isEmpty()){
+            JOptionPane.showMessageDialog(this,
+                    "é obrigatorio preencher todos os campos",
+                    "campos obrigatorios",
+                    JOptionPane.WARNING_MESSAGE);
+            }else{
+            alundao.atualizarUsuario(nomeAn, nome, endereco, cpf, sexo, curso, matricula);
+            }
+        }catch(SQLException e ){
+            JOptionPane.showMessageDialog(null, 
+                "erro"+e.getMessage(),
+                "Importante",
+                JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_salvarAJActionPerformed
+    private final AlunoDAO alundao = new AlunoDAO();
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ListarJF list = new ListarJF();
+        int janelaCf = JOptionPane.showConfirmDialog(null, 
+                "Voce deseja mesmo voltar e descartar todas as alterações?",
+                "Importante",
+                JOptionPane.INFORMATION_MESSAGE);
+        if(janelaCf == JOptionPane.YES_OPTION){
+            this.dispose();
+            ListarJF frameL = new ListarJF();
+            frameL.setVisible(false);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -357,6 +434,7 @@ public class AtualizarJF extends javax.swing.JFrame {
     private javax.swing.JTextField cursoAJ;
     private javax.swing.JTextField enderecoA1;
     private javax.swing.JTextField enderecoAJ;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -378,6 +456,55 @@ public class AtualizarJF extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField matriculaAJ;
     private javax.swing.JTextField nomeAJ;
+    private javax.swing.JButton salvarAJ;
     private javax.swing.JComboBox<String> sexoCB;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getCpfAJ() {
+        return cpfAJ;
+    }
+
+    public void setCpfAJ(JTextField cpfAJ) {
+        this.cpfAJ = cpfAJ;
+    }
+
+    public JTextField getCursoAJ() {
+        return cursoAJ;
+    }
+
+    public void setCursoAJ(JTextField cursoAJ) {
+        this.cursoAJ = cursoAJ;
+    }
+
+    public JTextField getEnderecoAJ() {
+        return enderecoAJ;
+    }
+
+    public void setEnderecoAJ(JTextField enderecoAJ) {
+        this.enderecoAJ = enderecoAJ;
+    }
+
+    public JTextField getMatriculaAJ() {
+        return matriculaAJ;
+    }
+
+    public void setMatriculaAJ(JTextField matriculaAJ) {
+        this.matriculaAJ = matriculaAJ;
+    }
+
+    public JTextField getNomeAJ() {
+        return nomeAJ;
+    }
+
+    public void setNomeAJ(JTextField nomeAJ) {
+        this.nomeAJ = nomeAJ;
+    }
+
+    public JComboBox<String> getSexoCB() {
+        return sexoCB;
+    }
+
+    public void setSexoCB(JComboBox<String> sexoCB) {
+        this.sexoCB = sexoCB;
+    }
 }
