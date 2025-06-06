@@ -400,13 +400,17 @@ public class CadastroJ extends javax.swing.JFrame {
                 List<Aluno> aluno = alunDAO.listarUsuarios();
                 for(Aluno u : aluno){
                     modeloT.addRow(new Object[]{
+                        u.getId(),
                         u.getNome(),
                         u.getEndereco(),
                         u.getCpf(),
                         u.getSexo(),
                         u.getCurso(),
                         u.getMatricula(), 
-                    });   
+                    });
+                    listarL.getTabelaLista().getColumnModel().getColumn(0).setMinWidth(0);
+                    listarL.getTabelaLista().getColumnModel().getColumn(0).setMaxWidth(0);
+                    listarL.getTabelaLista().getColumnModel().getColumn(0).setWidth(0);  
                 }
             }
         } catch (SQLException e) {

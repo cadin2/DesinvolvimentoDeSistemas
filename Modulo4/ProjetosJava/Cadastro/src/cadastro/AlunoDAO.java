@@ -153,9 +153,9 @@ public class AlunoDAO {
 
     
     
-     public void atualizarUsuario(String nomeA, String nomeN, String enderecoN, String cpfN,String sexoN,String cursoN,String matriculaN) throws SQLException{
+     public void atualizarUsuario(Aluno alunAtual) throws SQLException{
         String sql = "UPDATE Pessoa SET nome = ?, endereco = ? , "
-                + "cpf = ?, sexo = ?, curso = ?, matricula = ? WHERE nome = ?;";
+                + "cpf = ?, sexo = ?, curso = ?, matricula = ? WHERE id = ?;";
         
         PreparedStatement pstmt;
             pstmt = null;
@@ -164,13 +164,13 @@ public class AlunoDAO {
             
             pstmt = con.prepareStatement(sql);
            
-            pstmt.setString(1, nomeN);
-            pstmt.setString(2, enderecoN);
-            pstmt.setString(3, cpfN);
-            pstmt.setString(4, sexoN);
-            pstmt.setString(5, cursoN);
-            pstmt.setString(6, matriculaN);
-            pstmt.setString(7, nomeA);
+            pstmt.setString(1, alunAtual.getNome());
+            pstmt.setString(2, alunAtual.getEndereco());
+            pstmt.setString(3, alunAtual.getCpf());
+            pstmt.setString(4, alunAtual.getSexo());
+            pstmt.setString(5, alunAtual.getCurso());
+            pstmt.setString(6, alunAtual.getMatricula());
+            pstmt.setInt(7, alunAtual.getId());
 
             
             int linhaAfetadas = pstmt.executeUpdate();

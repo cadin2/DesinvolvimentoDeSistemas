@@ -58,7 +58,7 @@ public class ListarJF extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Endereco", "Cpf", "Sexo", "Curso", "Matricula"
+                "id", "Nome", "Endereco", "Cpf", "Sexo", "Curso", "Matricula"
             }
         ));
         tabelaLista.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -218,8 +218,8 @@ public class ListarJF extends javax.swing.JFrame {
     private void AtualizarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarAActionPerformed
         AtualizarJF atualizarF = new AtualizarJF();
         CadastroJ cadastroj = new CadastroJ();
-        int ls = tabelaLista.getSelectedRow();
         int items = cadastroj.getSexoT().getSelectedIndex();
+        int ls = tabelaLista.getSelectedRow();
         
         if(ls == -1){
             JOptionPane.showMessageDialog(this,
@@ -229,19 +229,19 @@ public class ListarJF extends javax.swing.JFrame {
             atualizarF.dispose();
         }else{
             atualizarF.setVisible(true);
-            String nome = (String) tabelaLista.getValueAt(ls, 0).toString();
+            String nome = (String) tabelaLista.getValueAt(ls, 1).toString();
             atualizarF.getNomeAJ().setText(nome);
             
-            String endereco = (String) tabelaLista.getValueAt(ls, 1).toString();
+            String endereco = (String) tabelaLista.getValueAt(ls, 2).toString();
             atualizarF.getEnderecoAJ().setText(endereco);
             
-            String cpf = (String) tabelaLista.getValueAt(ls, 2).toString();
+            String cpf = (String) tabelaLista.getValueAt(ls, 3).toString();
             atualizarF.getCpfAJ().setText(cpf);
             
-            String curso = (String) tabelaLista.getValueAt(ls, 4).toString();
+            String curso = (String) tabelaLista.getValueAt(ls, 5).toString();
             atualizarF.getCursoAJ().setText(curso);
             
-            String matricula = (String) tabelaLista.getValueAt(ls, 5).toString();
+            String matricula = (String) tabelaLista.getValueAt(ls, 6).toString();
             atualizarF.getMatriculaAJ().setText(matricula);
             
             

@@ -75,7 +75,7 @@ public class Cadastro {
             alunAtualizado.setCpf("");
             alunAtualizado.setSexo("");
             
-            dao.atualizarUsuario(alunAtualizado);
+            
         } catch (SQLException e) {
               JOptionPane.showMessageDialog(null,
                       e.getMessage(),
