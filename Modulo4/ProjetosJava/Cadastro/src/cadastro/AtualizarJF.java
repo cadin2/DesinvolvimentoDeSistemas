@@ -353,9 +353,11 @@ public class AtualizarJF extends javax.swing.JFrame {
 
     private void salvarAJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarAJActionPerformed
         ListarJF list = new ListarJF();
+        int coluna = 0;
         int ls = list.getTabelaLista().getSelectedRow();
+        int cs = (int) list.getTabelaLista().getValueAt(ls, coluna);
         
-        
+       
         
         try{
             String nome = nomeAJ.getText().trim();
@@ -371,7 +373,7 @@ public class AtualizarJF extends javax.swing.JFrame {
                     "campos obrigatorios",
                     JOptionPane.WARNING_MESSAGE);
             }else{
-                Aluno alunatualizado = new Aluno(curso, matricula, ls, nome, endereco, sexo, cpf);
+                Aluno alunatualizado = new Aluno(curso, matricula, cs, nome, endereco, sexo, cpf);
                 alundao.atualizarUsuario(alunatualizado);
                 JOptionPane.showMessageDialog(this,
                         "Aluno atualizado com sucesso!",

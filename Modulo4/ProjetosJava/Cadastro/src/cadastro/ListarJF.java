@@ -229,19 +229,19 @@ public class ListarJF extends javax.swing.JFrame {
             atualizarF.dispose();
         }else{
             atualizarF.setVisible(true);
-            String nome = (String) tabelaLista.getValueAt(ls, 1).toString();
+            String nome =  tabelaLista.getValueAt(ls, 1).toString();
             atualizarF.getNomeAJ().setText(nome);
             
-            String endereco = (String) tabelaLista.getValueAt(ls, 2).toString();
+            String endereco =  tabelaLista.getValueAt(ls, 2).toString();
             atualizarF.getEnderecoAJ().setText(endereco);
             
-            String cpf = (String) tabelaLista.getValueAt(ls, 3).toString();
+            String cpf =  tabelaLista.getValueAt(ls, 3).toString();
             atualizarF.getCpfAJ().setText(cpf);
             
-            String curso = (String) tabelaLista.getValueAt(ls, 5).toString();
+            String curso =  tabelaLista.getValueAt(ls, 5).toString();
             atualizarF.getCursoAJ().setText(curso);
             
-            String matricula = (String) tabelaLista.getValueAt(ls, 6).toString();
+            String matricula =  tabelaLista.getValueAt(ls, 6).toString();
             atualizarF.getMatriculaAJ().setText(matricula);
             
             

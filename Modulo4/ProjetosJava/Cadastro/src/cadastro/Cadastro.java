@@ -61,34 +61,32 @@ public class Cadastro {
         //buscar alunos
       
           //atualizar aluno
-          Connection con = null;
-          
-          try {
-            con = new CF().ConectDB();
-            AlunoDAO dao = new AlunoDAO(con);
-            Aluno alunAtualizado = new Aluno();
-            
-            alunAtualizado.setId(0);
-            alunAtualizado.setNome("");
-            alunAtualizado.setEndereco("");
-            alunAtualizado.setCurso("");
-            alunAtualizado.setCpf("");
-            alunAtualizado.setSexo("");
-            
-            
-        } catch (SQLException e) {
-              JOptionPane.showMessageDialog(null,
-                      e.getMessage(),
-                      "erro",
-                      JOptionPane.ERROR_MESSAGE);
-        }finally{
-              try {
-                  if(con != null)con.close();
-              } catch (SQLException e) {
-                  System.out.println("Erro: "+e.getMessage());
-              }
-          }
-          
-    }
-    
+//          Connection con = null;
+//          
+//          try {
+//            con = new CF().ConectDB();
+//            AlunoDAO dao = new AlunoDAO(con);
+//            Aluno alunAtualizado = new Aluno();
+//            
+//            alunAtualizado.setId(0);
+//            alunAtualizado.setNome("");
+//            alunAtualizado.setEndereco("");
+//            alunAtualizado.setCurso("");
+//            alunAtualizado.setCpf("");
+//            alunAtualizado.setSexo("");
+//            
+//            
+//        } catch (SQLException e) {
+//              JOptionPane.showMessageDialog(null,
+//                      e.getMessage(),
+//                      "erro",
+//                      JOptionPane.ERROR_MESSAGE);
+//        }finally{
+//              try {
+//                  if(con != null)con.close();
+//              } catch (SQLException e) {
+//                  System.out.println("Erro: "+e.getMessage());
+//              }
+//          }
+    }   
 }
